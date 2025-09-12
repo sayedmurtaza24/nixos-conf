@@ -177,7 +177,7 @@
 
         # Application launchers
         "$mainMod, T, exec, $terminal"
-        "$mainMod, Q, signal, 9"
+        "$mainMod, Q, killactive"
         "$mainMod, W, killactive"
         "$mainMod, E, exec, $fileManager"
         "$mainMod, SPACE, exec, $menu"

@@ -77,6 +77,7 @@
     webcord
     gfn-electron
     grim
+    rawtherapee
 
     # extra
     gnome-themes-extra
