@@ -55,7 +55,7 @@
   services.hypridle.enable = true;
   services.displayManager.sddm = {
     enable = true;
-    theme = "catppuccin-mocha";
+    theme = "catppuccin-mocha-mauve";
     wayland.enable = true;
     package = pkgs.kdePackages.sddm;
   };
@@ -76,6 +76,7 @@
     swaynotificationcenter
     (pkgs.catppuccin-sddm.override {
       flavor = "mocha";
+      accent = "mauve";
       font = "Operator Mono";
       fontSize = "12";
     })
