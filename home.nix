@@ -8,7 +8,8 @@
   imports = [
     ./waybar.nix
     ./hyprlock.nix
-    ./foot.nix
+    # ./foot.nix
+    ./ghostty.nix
     ./rofi-pass.nix
     ./hyprland.nix
     ./bash.nix
