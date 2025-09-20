@@ -11,7 +11,7 @@
       ];
 
       # Program variables
-      "$terminal" = "foot";
+      "$terminal" = "ghostty";
       "$fileManager" = "nautilus";
       "$menu" = "rofi -show drun";
       "$mainMod" = "SUPER";

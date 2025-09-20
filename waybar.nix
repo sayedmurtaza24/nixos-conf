@@ -59,7 +59,7 @@
           tooltip-format = "{controller_alias}\t{controller_address}";
           tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{device_enumerate}";
           tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
-          on-click = "${pkgs.foot}/bin/foot -T Bluetui -e ${pkgs.bluetui}/bin/bluetui";
+          on-click = "${pkgs.ghostty}/bin/ghostty --title=Bluetui -e ${pkgs.bluetui}/bin/bluetui";
         };
 
         # Module configurations
