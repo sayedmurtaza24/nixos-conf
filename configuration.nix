@@ -22,7 +22,7 @@
   ];
   nixpkgs.config.allowUnfree = true;
 
-  boot.blacklistedKernelModules = [ "mt7925e" ];
+  # boot.blacklistedKernelModules = [ "mt7925e" ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -134,9 +134,8 @@
   };
 
   networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless.iwd.enable = false;
+  networking.wireless.iwd.enable = true;
   networking.networkmanager.enable = true;
-
 
   networking.firewall.allowedTCPPorts = [ 43081 3216 ];
   networking.firewall.allowedUDPPorts = [ 43081 3216 ];
