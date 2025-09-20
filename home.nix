@@ -66,6 +66,7 @@
     file
     bitwarden-cli
     bluetui
+    impala
 
     # desktop apps
     bitwarden-desktop
