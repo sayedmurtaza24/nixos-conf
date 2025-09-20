@@ -48,12 +48,12 @@
 
       # General settings
       general = {
-        gaps_in = "2.5";
+        gaps_in = "3";
         gaps_out = 5;
         border_size = 2;
-        "col.active_border" = "rgba(335445bb) rgba(42635ebb) 45deg";
-        "col.inactive_border" = "rgba(383838bb)";
-        resize_on_border = false;
+        "col.active_border" = "rgba(333333ff)";
+        "col.inactive_border" = "rgba(222222ff)";
+        resize_on_border = true;
         allow_tearing = false;
         layout = "dwindle";
       };
