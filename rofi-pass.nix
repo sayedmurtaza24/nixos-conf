@@ -1,18 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  pinentry-rofi-wayland = pkgs.pinentry-rofi.overrideAttrs (old: {
-    buildInputs = old.buildInputs ++ [ ];
-    postInstall = ''
-      wrapProgram $out/bin/pinentry-rofi --prefix PATH : ${
-        pkgs.lib.makeBinPath [
-          pkgs.rofi-wayland
-          pkgs.coreutils
-        ]
-      }
-    '';
-  });
-in
 {
   # use built-in rbw module instead of manual package
   programs.rbw = {
@@ -22,7 +9,7 @@ in
       base_url = "https://api.bitwarden.eu";
       identity_url = "https://identity.bitwarden.eu";
       notifications_url = "https://notifications.bitwarden.eu";
-      pinentry = pinentry-rofi-wayland;
+      pinentry = pkgs.pinentry-rofi;
     };
   };
 
@@ -34,7 +21,7 @@ in
       ${pkgs.rbw}/bin/rbw unlock || exit 1
     fi
 
-    entry="$(${pkgs.rbw}/bin/rbw list | ${pkgs.rofi-wayland}/bin/rofi -dmenu -i -p 'Bitwarden')"
+    entry="$(${pkgs.rbw}/bin/rbw list | ${pkgs.rofi}/bin/rofi -dmenu -i -p 'Bitwarden')"
     [ -z "$entry" ] && exit 0
 
     ${pkgs.rbw}/bin/rbw get "$entry" --field username --clipboard
@@ -50,8 +37,6 @@ in
     ${pkgs.rbw}/bin/rbw get "$entry" --field totp --clipboard
     notify-send -t 2000 "Bitwarden" "TOTP copied to clipboard"
     sleep 3
-    wl-copy --clear
-
   '';
   home.file."bin/bitwarden-rofi".executable = true;
 

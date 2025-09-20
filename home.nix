@@ -74,7 +74,7 @@
     nautilus
     qimgv
     gnome-tweaks
-    rofi-wayland
+    rofi
     nwg-look
     webcord
     gfn-electron
