@@ -163,11 +163,6 @@
         repeat_delay = 220;
       };
 
-      # Gestures
-      gestures = {
-        workspace_swipe = false;
-      };
-
       # Key bindings
       bind = [
         # System controls
