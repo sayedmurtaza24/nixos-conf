@@ -19,7 +19,7 @@
 
       # Autostart
       exec-once = [
-        "swaybg --image ~/.config/hypr/background.jpg"
+        "swaybg --mode fill --image ~/.config/hypr/background.jpg"
       ];
 
       # debug = {
