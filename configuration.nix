@@ -103,6 +103,7 @@
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
+    roboto
     (pkgs.stdenv.mkDerivation {
       pname = "operator-mono";
       version = "1.0";
@@ -115,6 +116,22 @@
       installPhase = ''
         mkdir -p $out/share/fonts/opentype
         cp *.otf $out/share/fonts/opentype/
+      '';
+    })
+    (pkgs.stdenv.mkDerivation {
+      pname = "figtree";
+      version = "1.0";
+      # needs "nix-prefetch-url file:///etc/nixos/fonts/operator-mono.tar.gz" for now
+      src = pkgs.fetchurl {
+        url = "https://github.com/google/fonts/raw/refs/heads/main/ofl/figtree/Figtree%5Bwght%5D.ttf";
+        sha256 = "sha256-Jq09ubMf993mepH/UV0CLS9JXNUGWQaZzyZPC/5vtxQ="; # replace with correct hash
+      };
+
+      unpackPhase = ":";
+
+      installPhase = ''
+        mkdir -p $out/share/fonts
+        cp $src $out/share/fonts/Figtree.ttf
       '';
     })
   ];
