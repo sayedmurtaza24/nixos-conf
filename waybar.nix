@@ -318,7 +318,7 @@
     style = ''
       @define-color background  rgba(21, 21, 32, 0.75);
       @define-color warning     #f38ba8;
-      @define-color caution     #45475a;
+      @define-color caution     #6b6b73;
       @define-color performance #f5c2e7;
       @define-color audio       #cba6f7;
       @define-color misc        #94e2d5;
@@ -351,7 +351,7 @@
       }
 
       #waybar.main {
-        background: rgba(20, 20, 20, 0.4);
+        background: rgba(20, 20, 20, 0.7);
         font-family: "Operator Mono";
         font-size: 11pt;
         font-weight: 500;
