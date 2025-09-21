@@ -13,7 +13,7 @@
       # Program variables
       "$terminal" = "ghostty";
       "$fileManager" = "nautilus";
-      "$menu" = "rofi -show drun";
+      "$menu" = "caelestia shell drawers toggle launcher";
       "$mainMod" = "SUPER";
       "$windowManageMod" = "ALT";
 

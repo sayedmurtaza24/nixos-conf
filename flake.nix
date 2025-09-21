@@ -9,40 +9,31 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Official DankMaterialShell flake
-    dank-material-shell = {
-      url = "github:AvengeMedia/DankMaterialShell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Niri flake - required even if not using niri HM module due to DMS dependency
-    niri = {
-      url = "github:sodiboo/niri-flake";
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { nixpkgs, home-manager, niri, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, caelestia-shell, ... }@inputs: {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux"; # or "aarch64-linux" if you're on ARM
-        specialArgs = { inherit inputs; }; # Pass inputs to configuration
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
+
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.murtaza = import ./home.nix;
+            home-manager.extraSpecialArgs = { inherit inputs caelestia-shell; };
 
-            # Add overlays for packages
-            nixpkgs.overlays = [
-              # Make niri available if needed
-              (final: prev: {
-                niri = niri.packages.${prev.system}.niri;
-              })
-            ];
+            home-manager.users.murtaza = {
+              imports = [
+                ./home.nix
+                caelestia-shell.homeManagerModules.default
+              ];
+            };
           }
         ];
       };

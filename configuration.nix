@@ -73,7 +73,7 @@
   programs.neovim.vimAlias = true;
 
   environment.systemPackages = with pkgs; [
-    swaynotificationcenter
+    # swaynotificationcenter
     (pkgs.catppuccin-sddm.override {
       flavor = "mocha";
       accent = "mauve";

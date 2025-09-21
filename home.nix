@@ -2,21 +2,21 @@
   config,
   pkgs,
   inputs,
+  caelestia-shell,
   ...
 }:
 
 {
   imports = [
     # ./waybar.nix
-    ./hyprlock.nix
+    # ./hyprlock.nix
     # ./foot.nix
     ./ghostty.nix
     ./rofi-pass.nix
     ./hyprland.nix
     ./bash.nix
     ./remotegamepad.nix
-    inputs.dank-material-shell.homeModules.dankMaterialShell
-    inputs.niri.homeModules.niri
+    ./caelestia.nix
   ];
 
   systemd.user.sessionVariables = {
@@ -111,31 +111,6 @@
     indicator = true;
   };
 
+  services.dunst.enable = true;
   services.cliphist.enable = true;
-
-  programs.dankMaterialShell = {
-    enable = true;
-
-    # Enable niri keybinds (recommended)
-    enableKeybinds = false;
-
-    # Choose startup method - use either systemd OR spawn-at-startup, not both
-    enableSystemd = true;          # Recommended: systemd service
-    enableSpawn = false;           # Alternative: niri spawn-at-startup
-
-    # Feature toggles - enable/disable based on your needs
-    enableSystemMonitoring = true;    # CPU/RAM monitoring, process list
-    enableClipboard = true;            # Clipboard manager
-    enableVPN = true;                  # VPN status widget
-    enableBrightnessControl = true;    # Brightness control
-    enableNightMode = true;            # Night mode/blue light filter
-    enableDynamicTheming = true;       # Wallpaper-based theming with matugen
-    enableAudioWavelength = true;      # Audio visualizer with cava
-    enableCalendarEvents = true;       # Calendar integration with khal
-
-    # Specify quickshell package (uses the one from their flake)
-    quickshell = {
-      package = inputs.dank-material-shell.packages.${pkgs.system}.quickshell;
-    };
-  };
 }
