@@ -22,7 +22,7 @@
   ];
   nixpkgs.config.allowUnfree = true;
 
-  # boot.blacklistedKernelModules = [ "mt7925e" ];
+  boot.blacklistedKernelModules = [ "mt7925e" ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
