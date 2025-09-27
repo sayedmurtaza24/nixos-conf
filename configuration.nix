@@ -109,7 +109,7 @@
       version = "1.0";
       # needs "nix-prefetch-url file:///etc/nixos/fonts/operator-mono.tar.gz" for now
       src = pkgs.fetchurl {
-        url = "file:///etc/nixos/fonts/operator-mono.tar.gz";
+        url = "https://github.com/sayedmurtaza24/nixos-conf/raw/refs/heads/main/fonts/operator-mono.tar.gz";
         sha256 = "161g8q7xmgjzjcfqfsy37khcj0mdql83x2jyql7kvybbn22jwgkg";
       };
 
