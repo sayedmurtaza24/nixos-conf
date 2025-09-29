@@ -67,10 +67,6 @@
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
   programs.steam.enable = true;
-  programs.neovim.enable = true;
-  programs.neovim.defaultEditor = true;
-  programs.neovim.viAlias = true;
-  programs.neovim.vimAlias = true;
 
   environment.systemPackages = with pkgs; [
     # swaynotificationcenter
