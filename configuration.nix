@@ -49,6 +49,7 @@
     };
   };
 
+  services.flatpak.enable = true;
   services.gvfs.enable = true; # for nautilus to work
   services.getty.autologinOnce = true;
   services.getty.autologinUser = "murtaza";
