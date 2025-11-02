@@ -30,7 +30,8 @@
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
 
-  hardware.enableRedistributableFirmware = true;
+  hardware.firmware = [ pkgs.linux-firmware ];
+  hardware.enableAllFirmware = true;
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
