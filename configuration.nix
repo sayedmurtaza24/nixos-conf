@@ -25,6 +25,7 @@
   boot.blacklistedKernelModules = [ "mt7925e" ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
