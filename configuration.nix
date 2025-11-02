@@ -29,15 +29,6 @@
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
 
-  #24.11
-  hardware.graphics.extraPackages = with pkgs; [
-    amdvlk
-  ];
-  # For 32 bit applications
-  hardware.graphics.extraPackages32 = with pkgs; [
-    driversi686Linux.amdvlk
-  ];
-
   hardware.enableRedistributableFirmware = true;
   hardware.bluetooth = {
     enable = true;
@@ -86,8 +77,6 @@
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
   };
-
-  environment.variables.AMD_VULKAN_ICD = "RADV";
 
   users.users.murtaza = {
     isNormalUser = true;
