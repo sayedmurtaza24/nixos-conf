@@ -22,9 +22,9 @@
   ];
   nixpkgs.config.allowUnfree = true;
 
-  # boot.kernelParams = [
-  #   "pcie_aspm=off"
-  # ];
+  boot.kernelParams = [
+    "pcie_aspm=off"
+  ];
   boot.extraModprobeConfig = ''
     options mt7925e disable_aspm=1
   '';
@@ -69,7 +69,6 @@
   programs.steam.enable = true;
 
   environment.systemPackages = with pkgs; [
-    # swaynotificationcenter
     (pkgs.catppuccin-sddm.override {
       flavor = "mocha";
       accent = "mauve";
