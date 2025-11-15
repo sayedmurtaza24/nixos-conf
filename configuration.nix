@@ -22,7 +22,13 @@
   ];
   nixpkgs.config.allowUnfree = true;
 
-  boot.blacklistedKernelModules = [ "mt7925e" ];
+  # boot.kernelParams = [
+  #   "pcie_aspm=off"
+  # ];
+  boot.extraModprobeConfig = ''
+    options mt7925e disable_aspm=1
+  '';
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -30,7 +36,7 @@
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
 
-  hardware.firmware = [ pkgs.linux-firmware ];
+  hardware.enableRedistributableFirmware = true;
   hardware.enableAllFirmware = true;
   hardware.bluetooth = {
     enable = true;
