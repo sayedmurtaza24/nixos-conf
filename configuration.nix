@@ -24,14 +24,31 @@
 
   boot.kernelParams = [
     "pcie_aspm=off"
+    "btusb.enable_autosuspend=1"
+    "usbcore.autosuspend=1"
+    "snd-hda-intel.jackpoll_ms=1000"
   ];
+
   boot.extraModprobeConfig = ''
     options mt7925e disable_aspm=1
+
+    options snd-hda-codec-alc269 model=auto
+    options snd-hda-intel patch=hda-jack-retask.fw
+    options snd-hda-intel power_save=0
+    options snd-hda-intel probe_mask=1
+    options snd-hda-codec-realtek model=auto
   '';
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+  };
+  services.pulseaudio.enable = false;
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
@@ -83,6 +100,9 @@
       fontSize = "12";
     })
     pwvucontrol
+    pavucontrol
+    pulseaudio
+    alsa-utils
     overskride
     wttrbar
     baobab
