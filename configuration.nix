@@ -66,7 +66,14 @@
   programs.uwsm.enable = true;
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    package = pkgs.steam.override {
+      extraEnv = {
+        GDK_SCALE = 2;
+      };
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     (pkgs.catppuccin-sddm.override {
@@ -83,6 +90,7 @@
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    STEAM_FORCE_DESKTOP_UI_SCALING = "2";
   };
 
   users.users.murtaza = {
