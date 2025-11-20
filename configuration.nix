@@ -26,17 +26,10 @@
     "pcie_aspm=off"
     "btusb.enable_autosuspend=1"
     "usbcore.autosuspend=1"
-    "snd-hda-intel.jackpoll_ms=1000"
   ];
 
   boot.extraModprobeConfig = ''
     options mt7925e disable_aspm=1
-
-    options snd-hda-codec-alc269 model=auto
-    options snd-hda-intel patch=hda-jack-retask.fw
-    options snd-hda-intel power_save=0
-    options snd-hda-intel probe_mask=1
-    options snd-hda-codec-realtek model=auto
   '';
 
   boot.loader.systemd-boot.enable = true;
@@ -46,9 +39,10 @@
   services.pipewire = {
     enable = true;
     alsa.enable = true;
+    alsa.support32Bit = true;
     pulse.enable = true;
   };
-  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
