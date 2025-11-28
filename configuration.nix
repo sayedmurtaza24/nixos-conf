@@ -36,6 +36,11 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  documentation.man = {
+    enable = true;
+    man-db.enable = true;
+  };
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -77,6 +82,7 @@
   programs.uwsm.enable = true;
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
+  programs.zsh.enable = true;
   programs.steam = {
     enable = true;
     package = pkgs.steam.override {
@@ -86,6 +92,7 @@
     };
   };
 
+  environment.pathsToLink = [ "/share/zsh" ];
   environment.systemPackages = with pkgs; [
     (pkgs.catppuccin-sddm.override {
       flavor = "mocha";
@@ -97,9 +104,9 @@
     pavucontrol
     pulseaudio
     alsa-utils
-    overskride
-    wttrbar
-    baobab
+    baobab # disk usage analyzer
+    man-pages
+    man-pages-posix
   ];
 
   environment.sessionVariables = {
@@ -108,6 +115,7 @@
   };
 
   users.users.murtaza = {
+    shell = pkgs.zsh;
     isNormalUser = true;
     description = "Murtaza";
     extraGroups = [
