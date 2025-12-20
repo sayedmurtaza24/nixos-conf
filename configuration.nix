@@ -76,6 +76,24 @@
     package = pkgs.kdePackages.sddm;
   };
 
+  # gnome
+  programs.dconf.enable = true;
+  services.dbus.enable = true;
+  services.gnome.gnome-settings-daemon.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-hyprland
+    ];
+    config = {
+      common.default = ["gtk"];
+      hyprland.default = ["hyprland" "gtk"];
+    };
+  };
+
   programs.gamescope.enable = true;
   programs.nix-ld.enable = true;
   programs.gamemode.enable = true;
@@ -107,6 +125,9 @@
     baobab # disk usage analyzer
     man-pages
     man-pages-posix
+    adwaita-icon-theme
+    gnome-themes-extra
+    gnome-control-center
   ];
 
   environment.sessionVariables = {
