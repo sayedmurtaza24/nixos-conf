@@ -110,6 +110,7 @@
   ];
 
   environment.sessionVariables = {
+    skip_global_compinit = "1";
     NIXOS_OZONE_WL = "1";
     STEAM_FORCE_DESKTOP_UI_SCALING = "2";
   };
