@@ -196,7 +196,6 @@
   };
 
   networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless.iwd.enable = true;
   networking.networkmanager.enable = true;
 
   networking.firewall.allowedTCPPorts = [ 43081 3216 ];
