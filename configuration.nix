@@ -66,7 +66,6 @@
 
   services.flatpak.enable = true;
   services.gvfs.enable = true; # for nautilus to work
-  services.hypridle.enable = true;
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "murtaza";
   services.displayManager.sddm = {
